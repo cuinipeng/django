@@ -1,12 +1,409 @@
-{% load static %}
+<!DOCTYPE html>
+<html>
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-{% if latest_question_list %}
-<ul>
-    {% for question in latest_question_list %}
-    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No polls are available.</p>
-{% endif %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- {% load static %} -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}"> -->
+</head>
+
+<body style="padding-top: 80px;">
+
+    <!-- bootstrap 4 导航 -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-info fixed-top">
+        <a class="navbar-brand" href="#">Percy Cui 的博客</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <!-- 这个 div 加上 justify-content-end 样式即可 -->
+            <ul class="navbar-nav" id="headerNav">
+                <li class="nav-item" id="navMainPage"><a class="nav-link" href="#"> 主页 </a></li>
+                <li class="nav-item" id="navTechPage"><a class="nav-link" href="#"> 技术 </a></li>
+                <li class="nav-item" id="navFoodPage"><a class="nav-link" href="#"> 料理 </a></li>
+                <li class="nav-item" id="navPhotoPage"><a class="nav-link" href="#"> 摄影 </a></li>
+                <li class="nav-item" id="navEssayPage"><a class="nav-link" href="#"> 随笔 </a></li>
+                <li class="nav-item dropdown" id="navThinkPage">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">感悟</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">爱情</a>
+                        <a class="dropdown-item" href="#">事业</a>
+                        <a class="dropdown-item" href="#">未来</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <form class="form-inline">
+            <input class="form-control" type="text" placeholder="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+        </form>
+    </nav>
+
+    <div class="container">
+        <!-- 面包屑导航 1 -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active">Home</li>
+        </ol>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Library</li>
+        </ol>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Library</a></li>
+            <li class="breadcrumb-item active">Data</li>
+        </ol>
+        <!-- 面包屑导航 2 -->
+        <nav class="breadcrumb">
+            <a class="breadcrumb-item" href="#">Home</a>
+            <a class="breadcrumb-item" href="#">Library</a>
+            <a class="breadcrumb-item" href="#">Data</a>
+            <span class="breadcrumb-item active">Bootstrap</span>
+        </nav>
+    </div>
+
+    <!-- bootstrap 4 栅格系统 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>第一列</h3>
+                <p>前端初探</p>
+                <p>每年帮助3万名同学走向前端之路</p>
+            </div>
+            <div class="col-sm-4">
+                <h3>第二列</h3>
+                <p>前端初探</p>
+                <p>每年帮助3万名同学走向前端之路</p>
+            </div>
+            <div class="col-sm-4">
+                <h3>第三列</h3>
+                <p>前端初探</p>
+                <p>每年帮助3万名同学走向前端之路</p>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="container">
+        {% if latest_question_list %}
+        <ul>
+            {% for question in latest_question_list %}
+            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No polls are available.</p>
+        {% endif %}
+    </div>
+    <hr />
+
+    <!-- bootstrap 4 表格 -->
+    <div class="container table-responsive-sm">
+        <table class="table table-striped table-bordered table-hover table-sm">
+            <thead>
+                <tr class="table-success">
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-info">
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                </tr>
+                <tr class="table-warning">
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr class="table-danger">
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <hr />
+
+    <!-- bootstrap 4 信息提示框 -->
+    <div class="container">
+        <div class="alert alert-success">
+            <strong>成功！</strong>你应该认真阅读 <a href="#" class="alert-link">这条信息</a>。
+        </div>
+        <div class="alert alert-danger">
+            <strong>错误！</strong>操作失败</a>。
+        </div>
+    </div>
+    <hr />
+
+    <!-- bootstrap 4 按钮 -->
+    <div class="container">
+        <div class="container">
+            <label>按钮样式：</label>
+            <button type="button" class="btn">基本按钮</button>
+            <button type="button" class="btn btn-primary">主要按钮</button>
+            <button type="button" class="btn btn-secondary">次要按钮</button>
+            <button type="button" class="btn btn-success">成功</button>
+            <button type="button" class="btn btn-info">信息</button>
+            <button type="button" class="btn btn-warning">警告</button>
+            <button type="button" class="btn btn-danger">危险</button>
+            <button type="button" class="btn btn-dark">黑色</button>
+            <button type="button" class="btn btn-light">浅色</button>
+            <button type="button" class="btn btn-link">链接</button>
+            <input type="submit" class="btn btn-danger disabled" value="不可点击的提交按钮">
+        </div>
+        <div class="container">
+            <!-- 按钮设置边框 -->
+            <label>带边框的按钮：</label>
+            <button type="button" class="btn btn-outline-primary">主要按钮</button>
+            <button type="button" class="btn btn-outline-secondary">次要按钮</button>
+            <button type="button" class="btn btn-outline-success">成功</button>
+            <button type="button" class="btn btn-outline-info">信息</button>
+            <button type="button" class="btn btn-outline-warning">警告</button>
+            <button type="button" class="btn btn-outline-danger">危险</button>
+            <button type="button" class="btn btn-outline-dark">黑色</button>
+            <button type="button" class="btn btn-outline-light text-dark">浅色</button>
+        </div>
+        <div class="container">
+            <label>按钮尺寸：</label>
+            <button type="button" class="btn btn-primary btn-lg">大号按钮</button>
+            <button type="button" class="btn btn-primary">默认按钮</button>
+            <button type="button" class="btn btn-primary btn-sm">小号按钮</button>
+        </div>
+    </div>
+    <hr />
+
+    <!-- bootstrap 4 按钮组 -->
+    <div class="container">
+        <label>按钮组：</label>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary">Apple</button>
+            <button type="button" class="btn btn-primary">Samsung</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Sony</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Table</a>
+                    <a class="dropdown-item" href="#">Smartphone</a>
+                </div>
+            </div>
+        </div>
+        <!-- 拆分按钮下拉菜单 -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary">Sony</button>
+            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Tablet</a>
+                <a class="dropdown-item" href="#">Smartphone</a>
+            </div>
+        </div>
+        <!-- 垂直按钮组及下拉菜单 -->
+        <!-- btn-group-vertical 垂直按钮组 -->
+        <div class="btn-group-sm btn-group-vertical">
+            <button type="button" class="btn btn-primary">Apple</button>
+            <button type="button" class="btn btn-primary">Samsung</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Sony
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Tablet</a>
+                    <a class="dropdown-item" href="#">Smartphone</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <!-- bootstrap 4 徽章 -->
+    <div class="container">
+        <label>徽章：</label>
+        <div class="container">
+            <!-- 所有颜色类型的徽章 -->
+            <span class="badge badge-primary">主要</span>
+            <span class="badge badge-secondary">次要</span>
+            <span class="badge badge-success">成功</span>
+            <span class="badge badge-danger">危险</span>
+            <span class="badge badge-warning">警告</span>
+            <span class="badge badge-info">信息</span>
+            <span class="badge badge-light">浅色</span>
+            <span class="badge badge-dark">深色</span>
+        </div>
+        <div>
+            <!-- 药丸形状徽章 -->
+            <span class="badge badge-pill badge-default">默认</span>
+            <span class="badge badge-pill badge-primary">主要</span>
+            <span class="badge badge-pill badge-success">成功</span>
+            <span class="badge badge-pill badge-info">信息</span>
+            <span class="badge badge-pill badge-warning">警告</span>
+            <span class="badge badge-pill badge-danger">危险</span>
+        </div>
+    </div>
+    <hr />
+
+    <!-- bootstrap 4 进度条 -->
+    <div class="container">
+        <label>进度条：</label>
+        <!-- 不同颜色的进度条 + 进度条标签 -->
+        <div class="progress" style="height:16px;">
+            <div class="progress-bar bg-success" style="width:25%">25%</div>
+        </div>
+        <div class="progress" style="height:16px;">
+            <div class="progress-bar bg-info" style="width:50%">50%</div>
+        </div>
+        <div class="progress" style="height:16px;">
+            <div class="progress-bar bg-warning" style="width:75%">75%</div>
+        </div>
+        <div class="progress" style="height:16px;">
+            <div class="progress-bar bg-danger" style="width:100%">100%</div>
+        </div>
+        <!-- 条纹的进度条 -->
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" style="width:40%">40%</div>
+        </div>
+        <!-- 动画进度条 -->
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width: 40%"></div>
+        </div>
+        <!-- 混合色彩进度条 -->
+        <div class="progress">
+            <div class="progress-bar bg-success" style="width:40%">
+                Free Space
+            </div>
+            <div class="progress-bar bg-warning" style="width:10%">
+                Warning
+            </div>
+            <div class="progress-bar bg-danger" style="width:20%">
+                Danger
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <!-- bootstrap 分页 -->
+    <div class="container">
+        <label>分页：</label>
+        <div class="container">
+            <!-- pagination-sm/pagination-lg -->
+            <ul class="pagination pagination-sm">
+                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li> <!-- 不可点击的分页链接 -->
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active"><a class="page-link" href="#">2</a></li> <!-- 当前页页码状态 -->
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+        </div>
+        <div>
+            <!-- 面包屑导航 -->
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Photos</a></li>
+                <li class="breadcrumb-item"><a href="#">Summer 2017</a></li>
+                <li class="breadcrumb-item active"><a href="#">Italy</a></li>
+                <li class="breadcrumb-item"><a href="#">Rome</a></li>
+            </ul>
+        </div>
+    </div>
+    <hr />
+
+    <!-- bootstrap 列表组 -->
+    <div class="container">
+        <div class="container">
+            <ul class="list-group">
+                <li class="list-group-item">First item</li>
+                <li class="list-group-item active">Second item(Active)</li>
+                <li class="list-group-item disabled">Third item(Disabled)</li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">激活列表项</a>
+                <a href="#" class="list-group-item list-group-item-success">成功列表项</a>
+                <a href="#" class="list-group-item list-group-item-secondary">次要列表项</a>
+                <a href="#" class="list-group-item list-group-item-info">信息列表项</a>
+                <a href="#" class="list-group-item list-group-item-warning">警告列表项</a>
+                <a href="#" class="list-group-item list-group-item-danger">危险列表项</a>
+                <a href="#" class="list-group-item list-group-item-primary">主要列表项</a>
+                <a href="#" class="list-group-item list-group-item-dark">深灰色列表项</a>
+                <a href="#" class="list-group-item list-group-item-light">浅色列表项</a>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <!-- bootstrap 4 下拉菜单 -->
+    <div class="container">
+        <div class="container">
+            <!-- 
+                .dropdown 类用来指定一个下拉菜单。
+                我们可以使用一个按钮或链接来打开下拉菜单， 按钮或链接需要添加 .dropdown-toggle 和 data-toggle="dropdown" 属性。
+                <div> 元素上添加 .dropdown-menu 类来设置实际下拉菜单，然后在下拉菜单的选项中添加 .dropdown-item 类。
+            -->
+            <!-- dropdown/dropup -->
+            <div class="dropup">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    Dropdown button
+                </button>
+                <div class="dropdown-menu">
+                    <div class="dropdown-header">Dropdown header 1</div> <!-- 下拉菜单中的标题 -->
+                    <a class="dropdown-item" href="#">Link 1</a>
+                    <a class="dropdown-item" href="#">Link 2</a>
+                    <div class="dropdown-divider"></div> <!-- 下拉菜单中的分割线 -->
+                    <div class="dropdown-header">Dropdown header 2</div> <!-- 下拉菜单中的标题 -->
+                    <a class="dropdown-item active" href="#">Link 3</a>
+                    <a class="dropdown-item disabled" href="#">Link 4</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="container">
+            <!-- 堆叠表单 -->
+            <form>
+                <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Password:</label>
+                    <input type="password" class="form-control" id="pwd">
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox"> Remember me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div>
+            内联表单
+            <form class="form-inline">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox"> Remember me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

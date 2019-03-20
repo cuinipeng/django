@@ -6,7 +6,7 @@ class M1(MiddlewareMixin):
     def process_request(self, request):
         print('M1.process_request')
         # 如果此处有 return, 后面的不执行, 直接返回给用户
-        return HttpResponse('M1.DirectResponse')
+        # return HttpResponse('M1.DirectResponse')
 
     def process_view(self, request, callback, callback_args, callback_kwargs):
         print('M1.process_view')
